@@ -42,3 +42,7 @@ terraform.rc
 # SSH Keys
 *.pub
 *.pem
+
+# configuration
+**/.devcontainer
+**/.vscode
