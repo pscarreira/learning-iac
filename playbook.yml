@@ -8,11 +8,3 @@
           - nodejs
         update_cache: true
       become: true
-    - name: Instalando dependência com pip (Django & Django Rest Framework)
-      pip:
-        virtualenv: /home/ubuntu/myserver/venv
-        name:
-          - django
-          - djangorestframework
-
-
