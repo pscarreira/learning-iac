@@ -10,8 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "default"
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 resource "aws_instance" "app_server" {
@@ -20,7 +19,7 @@ resource "aws_instance" "app_server" {
   key_name                    = "terraform-aws"
   user_data_replace_on_change = true
   tags = {
-    Name = "Teste AWS"
+    Name = "Terraform Ansible Python"
   }
   security_groups = ["acesso-ssh", "acesso-total"]
 }
