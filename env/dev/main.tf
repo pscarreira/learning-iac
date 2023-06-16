@@ -6,3 +6,6 @@ module "aws-dev" {
   name       = "Server-DEV"
 }
 
+output "ip" {
+  value = module.aws-dev.ip_publico
+}
