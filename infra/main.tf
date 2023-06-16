@@ -10,18 +10,22 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.region_aws
 }
 
 resource "aws_instance" "app_server" {
-  ami                         = "ami-053b0d53c279acc90"
-  instance_type               = "t2.micro"
-  key_name                    = "terraform-aws"
-  user_data_replace_on_change = true
+  ami           = "ami-053b0d53c279acc90"
+  instance_type = var.instance
+  key_name      = var.key
   tags = {
-    Name = "Terraform Ansible Python"
+    Name = var.name
   }
   security_groups = ["acesso-ssh", "acesso-total"]
+}
+
+resource "aws_key_pair" "chaveSSH" {
+  key_name   = var.key
+  public_key = file("${var.key}.pub")
 }
 
 
