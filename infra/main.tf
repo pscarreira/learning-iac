@@ -20,7 +20,7 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = var.name
   }
-  security_groups = ["acesso-ssh", "acesso-total"]
+  vpc_security_group_ids = [aws_security_group.acesso_geral.id]
 }
 
 resource "aws_key_pair" "chaveSSH" {
