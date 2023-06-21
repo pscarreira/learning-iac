@@ -32,3 +32,13 @@ output "ip_publico" {
   value = aws_instance.app_server.public_ip
 }
 
+resource "aws_autoscaling_group" "dev_asg" {
+  name     = var.asg_name
+  max_size = var.max_size
+  min_size = var.min_size
+  launch_template {
+    id      = aws_launch_template.server_instante.id
+    version = "$Latest"
+  }
+}
+

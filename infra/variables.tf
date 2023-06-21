@@ -17,3 +17,15 @@ variable "name" {
 variable "security_group" {
   type = string
 }
+
+variable "min_size" {
+  type = number
+}
+
+variable "max_size" {
+  type = number
+}
+
+variable "asg_name" {
+  type = string
+}

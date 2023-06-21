@@ -5,6 +5,9 @@ module "aws-dev" {
   instance       = "t2.micro"
   name           = "Server-DEV"
   security_group = "Dev-SG"
+  min_size       = 0
+  max_size       = 3
+  asg_name       = "Dev-ASG"
 }
 
 output "ip" {
