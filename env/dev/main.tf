@@ -5,11 +5,7 @@ module "aws-dev" {
   instance       = "t2.micro"
   name           = "Server-DEV"
   security_group = "Dev-SG"
-  min_size       = 0
+  min_size       = 1
   max_size       = 3
   asg_name       = "Dev-ASG"
-}
-
-output "ip" {
-  value = module.aws-dev.ip_publico
 }
