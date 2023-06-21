@@ -73,3 +73,15 @@ resource "aws_lb_listener" "listener_load_balancer" {
     target_group_arn = aws_lb_target_group.target_group_dev.arn
   }
 }
+
+resource "aws_autoscaling_policy" "asp_dev" {
+  name                   = "ASP_dev"
+  autoscaling_group_name = var.asg_name
+  policy_type            = "TargetTrackingScaling"
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+    target_value = 50.0
+  }
+}
