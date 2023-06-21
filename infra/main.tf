@@ -50,9 +50,9 @@ resource "aws_default_subnet" "subnet_2_dev" {
 }
 
 resource "aws_lb" "load_balancer_dev" {
-  internal = false
-  subnets  = [aws_default_subnet.subnet_1_dev.id, aws_default_subnet.subnet_2_dev.id]
-  //security_groups = [aws_security_group.acesso_geral.id]
+  internal        = false
+  subnets         = [aws_default_subnet.subnet_1_dev.id, aws_default_subnet.subnet_2_dev.id]
+  security_groups = [aws_security_group.acesso_geral.id]
 }
 
 resource "aws_default_vpc" "vpc_default_dev" {}
