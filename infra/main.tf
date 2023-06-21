@@ -20,7 +20,7 @@ resource "aws_launch_template" "server_instante" {
   tags = {
     Name = var.name
   }
-  security_group_names = [var.security_group]
+  vpc_security_group_ids = [aws_security_group.acesso_geral.id]
 }
 
 resource "aws_key_pair" "chaveSSH" {
@@ -28,14 +28,11 @@ resource "aws_key_pair" "chaveSSH" {
   public_key = file("${var.key}.pub")
 }
 
-output "ip_publico" {
-  value = aws_instance.app_server.public_ip
-}
-
 resource "aws_autoscaling_group" "dev_asg" {
-  name     = var.asg_name
-  max_size = var.max_size
-  min_size = var.min_size
+  availability_zones = ["${var.region_aws}a"]
+  name               = var.asg_name
+  max_size           = var.max_size
+  min_size           = var.min_size
   launch_template {
     id      = aws_launch_template.server_instante.id
     version = "$Latest"
