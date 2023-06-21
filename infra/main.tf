@@ -13,14 +13,14 @@ provider "aws" {
   region = var.region_aws
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-053b0d53c279acc90"
+resource "aws_launch_template" "server_instante" {
+  image_id      = "ami-053b0d53c279acc90"
   instance_type = var.instance
   key_name      = var.key
   tags = {
     Name = var.name
   }
-  vpc_security_group_ids = [aws_security_group.acesso_geral.id]
+  security_group_names = [var.security_group]
 }
 
 resource "aws_key_pair" "chaveSSH" {

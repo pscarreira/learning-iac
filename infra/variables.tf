@@ -13,3 +13,7 @@ variable "instance" {
 variable "name" {
   type = string
 }
+
+variable "security_group" {
+  type = string
+}
